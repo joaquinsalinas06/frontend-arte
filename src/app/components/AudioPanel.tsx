@@ -1,6 +1,6 @@
 'use client'
 
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react'
+import { Play, Pause, Volume2} from 'lucide-react'
 
 interface AudioData {
   titulo: string

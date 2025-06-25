@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet'
-import { Volume2, VolumeX, Play, Pause } from 'lucide-react'
 import DecibelMeter from '@/app/components/DecibelMeter'
 import AudioPanel from '@/app/components/AudioPanel'
 import StatsPanel from '@/app/components/StatsPanel'

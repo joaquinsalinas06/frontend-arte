@@ -2,13 +2,20 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
+interface AudioData {
+  titulo: string
+  descripcion: string
+  url: string
+  tipo: 'ambiente' | 'trafico' | 'comercial'
+}
+
 interface SectorData {
   id: number
   name: string
   lat: number
   lon: number
   decibeles: number
-  audios: any[]
+  audios: AudioData[]
 }
 
 interface StatsPanelProps {
