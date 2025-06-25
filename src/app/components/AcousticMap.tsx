@@ -1,10 +1,11 @@
 'use client'
 
-import { useState} from 'react'
-import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet'
+import { useState, useEffect } from 'react'
+import { MapContainer, TileLayer, Popup, Polygon, CircleMarker } from 'react-leaflet'
 import DecibelMeter from '@/app/components/DecibelMeter'
 import AudioPanel from '@/app/components/AudioPanel'
 import StatsPanel from '@/app/components/StatsPanel'
+import { loadBarrancoCoordinates, BarrancoCoordinates } from '@/app/utils/geoJsonLoader'
 
 // Importar estilos de Leaflet
 import 'leaflet/dist/leaflet.css'
@@ -192,38 +193,7 @@ const sectorsData: SectorData[] = [
   }
 ]
 
-// Polígono de Barranco (deshabilitado hasta obtener GeoJSON oficial)
-/*
-const barrancoPolygon: [number, number][] = [
-  [-12.1350, -77.0280],  // Noroeste - Límite con Miraflores
-  [-12.1345, -77.0270],  // Norte
-  [-12.1340, -77.0250],  // Noreste superior
-  [-12.1350, -77.0230],  // Noreste
-  [-12.1360, -77.0220],  // Este - Av. República de Panamá
-  [-12.1370, -77.0215],  // Este central
-  [-12.1380, -77.0210],  // Este inferior
-  [-12.1390, -77.0200],  // Sureste superior
-  [-12.1400, -77.0190],  // Sureste - Av. Grau
-  [-12.1410, -77.0180],  // Sur central
-  [-12.1420, -77.0170],  // Sur - Bajada de los Baños
-  [-12.1435, -77.0165],  // Suroeste superior - Costa
-  [-12.1450, -77.0170],  // Suroeste - Malecón
-  [-12.1460, -77.0180],  // Oeste inferior - Costa
-  [-12.1465, -77.0190],  // Oeste central - Playa
-  [-12.1460, -77.0200],  // Oeste superior
-  [-12.1450, -77.0210],  // Noroeste inferior
-  [-12.1440, -77.0220],  // Noroeste central
-  [-12.1430, -77.0230],  // Noroeste superior
-  [-12.1420, -77.0240],  // Norte occidental
-  [-12.1410, -77.0250],  // Norte central occidental
-  [-12.1400, -77.0260],  // Norte occidental superior
-  [-12.1390, -77.0270],  // Norte - límite con Miraflores
-  [-12.1380, -77.0275],  // Norte - continuación límite
-  [-12.1370, -77.0278],  // Norte - final límite
-  [-12.1360, -77.0280],  // Noroeste - cierre
-  [-12.1350, -77.0280]   // Cerrar polígono
-]
-*/
+
 
 // Función para obtener color y configuración de mancha según decibeles
 const getSoundVisualization = (decibeles: number) => {
@@ -272,6 +242,20 @@ export default function AcousticMap() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [showAllSectors, setShowAllSectors] = useState(true)
   const [selectedSectorTypes, setSelectedSectorTypes] = useState<string[]>(['SS-1A', 'SS-1B', 'SS-2A', 'SS-2B', 'SS-2C', 'C1', 'C2'])
+  const [barrancoData, setBarrancoData] = useState<BarrancoCoordinates | null>(null)
+  const [isLoadingCoordinates, setIsLoadingCoordinates] = useState(true)
+
+  // Cargar coordenadas reales de Barranco al montar el componente
+  useEffect(() => {
+    const loadCoordinates = async () => {
+      setIsLoadingCoordinates(true)
+      const coordinates = await loadBarrancoCoordinates()
+      setBarrancoData(coordinates)
+      setIsLoadingCoordinates(false)
+    }
+    
+    loadCoordinates()
+  }, [])
 
   // Función para reproducir audio
   const playAudio = (audioUrl: string) => {
@@ -418,7 +402,7 @@ export default function AcousticMap() {
       {/* Mapa Central */}
       <div className="flex-1 relative">
         <MapContainer
-          center={[-12.1410, -77.0225]}
+          center={barrancoData?.center || [-12.1410, -77.0225]}
           zoom={15}
           style={{ height: '100%', width: '100%' }}
         >
@@ -427,32 +411,34 @@ export default function AcousticMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           
-          {/* Polígono de Barranco temporalmente deshabilitado hasta obtener GeoJSON oficial */}
-          {/* 
-          <Polygon
-            positions={barrancoPolygon}
-            pathOptions={{
-              color: '#2563eb',
-              weight: 3,
-              opacity: 0.8,
-              fillColor: '#3b82f6',
-              fillOpacity: 0.15,
-              dashArray: '5, 5',
-            }}
-          >
-            <Popup>
-              <div className="p-2">
-                <h4 className="font-bold text-lg">Distrito de Barranco</h4>
-                <p className="text-sm text-gray-600">
-                  Lima, Perú - Área de monitoreo acústico
-                </p>
-                <p className="text-xs text-gray-500 mt-2">
-                  {sectorsData.length} sectores monitoreados
-                </p>
-              </div>
-            </Popup>
-          </Polygon>
-          */}
+          {/* Polígono de Barranco con coordenadas reales del GeoJSON */}
+          {barrancoData && !isLoadingCoordinates && (
+            <Polygon
+              positions={barrancoData.coordinates}
+              pathOptions={{
+                color: '#e74c3c',
+                weight: 2,
+                opacity: 0.9,
+                fillColor: '#3498db',
+                fillOpacity: 0.1,
+              }}
+            >
+              <Popup>
+                <div className="p-3">
+                  <h4 className="font-bold text-lg text-red-600">Distrito de Barranco</h4>
+                  <p className="text-sm text-gray-600">
+                    Lima, Perú - Límites oficiales
+                  </p>
+                  <p className="text-xs text-gray-500 mt-2">
+                    {sectorsData.length} sectores monitoreados
+                  </p>
+                  <p className="text-xs text-green-600 mt-1">
+                    ✅ Coordenadas del archivo GeoJSON oficial
+                  </p>
+                </div>
+              </Popup>
+            </Polygon>
+          )}
           
           {sectorsData
             .filter(sector => {
