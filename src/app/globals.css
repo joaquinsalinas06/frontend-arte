@@ -24,3 +24,34 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Estilos para las manchas de sonido difuminadas */
+.sound-spot-high {
+  filter: blur(8px);
+  opacity: 0.8;
+}
+
+.sound-spot-medium-high {
+  filter: blur(6px);
+  opacity: 0.7;
+}
+
+.sound-spot-medium {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+
+.sound-spot-low {
+  filter: blur(2px);
+  opacity: 0.5;
+}
+
+/* Efecto hover para las manchas */
+.sound-spot-high:hover,
+.sound-spot-medium-high:hover,
+.sound-spot-medium:hover,
+.sound-spot-low:hover {
+  filter: blur(0px);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
