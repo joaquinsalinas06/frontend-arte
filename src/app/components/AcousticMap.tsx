@@ -179,53 +179,76 @@ export default function AcousticMap() {
   const center: [number, number] = barrancoCoords ? barrancoCoords.center : [-12.140, -77.020]
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 p-6">
-      {/* Panel izquierdo - Información y controles */}
-      <div className="lg:w-1/4 space-y-6">
-        {/* Información del sector seleccionado */}
-        {selectedSector && (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
-              {selectedSector.name}
-            </h3>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">
-                {selectedSector.decibeles} dB
-              </div>
-              <div className="text-sm text-gray-600 mt-1">
-                Nivel de ruido actual
-              </div>
+    <div className="flex flex-col space-y-4 sm:space-y-6">
+      {/* Layout móvil: Todo en columna, Desktop: 3 columnas */}
+      
+      {/* Panel superior en móviles - Información del sector seleccionado */}
+      {selectedSector && (
+        <div className="block lg:hidden bg-white rounded-xl shadow-lg p-4">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 text-center">
+            {selectedSector.name}
+          </h3>
+          <div className="text-center">
+            <div className="text-2xl sm:text-3xl font-bold text-blue-600">
+              {selectedSector.decibeles} dB
+            </div>
+            <div className="text-xs sm:text-sm text-gray-600 mt-1">
+              Nivel de ruido actual
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Medidor de decibeles */}
-        {selectedSector && (
-          <DecibelMeter value={selectedSector.decibeles} />
-        )}
+      {/* Layout desktop y tablet */}
+      <div className="flex flex-col lg:flex-row gap-2 sm:gap-4 lg:gap-6">
+        
+        {/* Panel izquierdo - Información y controles (oculto en móvil) */}
+        <div className="hidden lg:block lg:w-1/4 space-y-6">
+          {/* Información del sector seleccionado */}
+          {selectedSector && (
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                {selectedSector.name}
+              </h3>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600">
+                  {selectedSector.decibeles} dB
+                </div>
+                <div className="text-sm text-gray-600 mt-1">
+                  Nivel de ruido actual
+                </div>
+              </div>
+            </div>
+          )}
 
-        {/* Estadísticas generales */}
-        <StatsPanel sectors={sectorsData} />
-      </div>
+          {/* Medidor de decibeles */}
+          {selectedSector && (
+            <DecibelMeter value={selectedSector.decibeles} />
+          )}
 
-      {/* Panel central - Mapa */}
-      <div className="lg:w-1/2">
-        <div className="bg-white rounded-xl shadow-lg p-4">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-            Mapa Acústico de Barranco
-          </h2>
-          <div className="h-96 lg:h-[500px] rounded-lg overflow-hidden">
-            <MapContainer
-              center={center}
-              zoom={15}
-              className="h-full w-full"
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              
-              {/* Polígono de Barranco */}
+          {/* Estadísticas generales */}
+          <StatsPanel sectors={sectorsData} />
+        </div>
+
+        {/* Panel central - Mapa (responsivo) */}
+        <div className="w-full lg:w-1/2">
+          <div className="bg-white rounded-xl shadow-lg p-2 sm:p-4">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 sm:mb-4 text-center">
+              Mapa Acústico de Barranco
+            </h2>
+            <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden">
+              <MapContainer
+                center={center}
+                zoom={15}
+                className="h-full w-full"
+                zoomControl={false}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                
+                {/* Polígono de Barranco */}
               {barrancoCoords && (
                 <Polygon
                   positions={barrancoCoords.coordinates}
@@ -406,18 +429,53 @@ export default function AcousticMap() {
                 )
               })}
             </MapContainer>
+            </div>
           </div>
+        </div>
+
+        {/* Panel derecho - Audios (oculto en móvil, mostrado en desktop) */}
+        <div className="hidden lg:block lg:w-1/4">
+          <AudioPanel 
+            sector={selectedSector}
+            onPlayAudio={handlePlayAudio}
+            onPauseAudio={handlePauseAudio}
+            isPlaying={isPlaying}
+          />
         </div>
       </div>
 
-      {/* Panel derecho - Audios */}
-      <div className="lg:w-1/4">
+      {/* Panel de audios para móviles (abajo del mapa) */}
+      <div className="block lg:hidden">
         <AudioPanel 
           sector={selectedSector}
           onPlayAudio={handlePlayAudio}
           onPauseAudio={handlePauseAudio}
           isPlaying={isPlaying}
         />
+      </div>
+
+      {/* Panel de estadísticas para móviles */}
+      <div className="block lg:hidden">
+        {selectedSector && (
+          <div className="bg-white rounded-xl shadow-lg p-4">
+            <h3 className="text-lg font-bold text-gray-800 mb-4 text-center">
+              📊 Estadísticas del Sistema
+            </h3>
+            <StatsPanel sectors={sectorsData} />
+          </div>
+        )}
+      </div>
+
+      {/* Medidor de decibeles para móviles (al final) */}
+      <div className="block lg:hidden">
+        {selectedSector && (
+          <div className="bg-white rounded-xl shadow-lg p-4">
+            <h3 className="text-lg font-bold text-gray-800 mb-4 text-center">
+              🔊 Medidor de Ruido
+            </h3>
+            <DecibelMeter value={selectedSector.decibeles} />
+          </div>
+        )}
       </div>
     </div>
   )
