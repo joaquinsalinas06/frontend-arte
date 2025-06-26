@@ -24,176 +24,41 @@ interface SectorData {
   lat: number
   lon: number
   decibeles: number
+  polygon?: [number, number][]
+  color?: string
   audios: AudioData[]
 }
 
-// Sectores oficiales de Barranco con coordenadas ajustadas a los límites reales
-const sectorsData: SectorData[] = [
-  {
-    id: 0,
-    name: 'Sector SS-1A',
-    lat: -12.1370,
-    lon: -77.0240,
-    decibeles: 55,
-    audios: [
-      {
-        titulo: 'Zona Residencial Norte',
-        descripcion: 'Ambiente tranquilo de área residencial con tráfico ligero',
-        url: '/audios/ss1a_ambiente.mp3',
-        tipo: 'ambiente'
-      },
-      {
-        titulo: 'Av. República de Panamá',
-        descripcion: 'Tráfico vehicular en hora punta',
-        url: '/audios/ss1a_trafico.mp3',
-        tipo: 'trafico'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Sector SS-1B',
-    lat: -12.1395,
-    lon: -77.0220,
-    decibeles: 68,
-    audios: [
-      {
-        titulo: 'Plaza de Barranco',
-        descripcion: 'Centro neurálgico con actividad comercial y turística',
-        url: '/audios/ss1b_plaza.mp3',
-        tipo: 'comercial'
-      },
-      {
-        titulo: 'Música y Arte Callejero',
-        descripcion: 'Artistas y músicos en la plaza principal',
-        url: '/audios/ss1b_arte.mp3',
-        tipo: 'comercial'
-      }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Sector SS-2A',
-    lat: -12.1400,
-    lon: -77.0195,
-    decibeles: 78,
-    audios: [
-      {
-        titulo: 'Av. Grau - Tráfico Intenso',
-        descripcion: 'Una de las avenidas más transitadas de Barranco',
-        url: '/audios/ss2a_grau.mp3',
-        tipo: 'trafico'
-      },
-      {
-        titulo: 'Comercio Diurno',
-        descripcion: 'Actividad comercial intensa durante el día',
-        url: '/audios/ss2a_comercio.mp3',
-        tipo: 'comercial'
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Sector SS-2B',
-    lat: -12.1420,
-    lon: -77.0180,
-    decibeles: 42,
-    audios: [
-      {
-        titulo: 'Puente de los Suspiros',
-        descripcion: 'Zona turística tranquila y romántica',
-        url: '/audios/ss2b_puente.mp3',
-        tipo: 'ambiente'
-      },
-      {
-        titulo: 'Bajada de los Baños',
-        descripcion: 'Ambiente costero con sonidos del mar',
-        url: '/audios/ss2b_bajada.mp3',
-        tipo: 'ambiente'
-      }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Sector SS-2C',
-    lat: -12.1450,
-    lon: -77.0190,
-    decibeles: 48,
-    audios: [
-      {
-        titulo: 'Malecón de Barranco',
-        descripcion: 'Brisa marina y ambiente costero relajante',
-        url: '/audios/ss2c_malecon.mp3',
-        tipo: 'ambiente'
-      },
-      {
-        titulo: 'Olas del Pacífico',
-        descripcion: 'Sonidos naturales del océano',
-        url: '/audios/ss2c_mar.mp3',
-        tipo: 'ambiente'
-      }
-    ]
-  },
-  {
-    id: 5,
-    name: 'Sector C1 (Norte)',
-    lat: -12.1380,
-    lon: -77.0250,
-    decibeles: 72,
-    audios: [
-      {
-        titulo: 'Calle Ayacucho',
-        descripcion: 'Vida nocturna y bares bohemios',
-        url: '/audios/c1_ayacucho.mp3',
-        tipo: 'comercial'
-      },
-      {
-        titulo: 'Tráfico Urbano Nocturno',
-        descripcion: 'Circulación vehicular en horario nocturno',
-        url: '/audios/c1_nocturno.mp3',
-        tipo: 'trafico'
-      }
-    ]
-  },
-  {
-    id: 6,
-    name: 'Sector C2 (Sur)',
-    lat: -12.1430,
-    lon: -77.0210,
-    decibeles: 38,
-    audios: [
-      {
-        titulo: 'Parque Municipal',
-        descripcion: 'Zona verde con actividades recreativas',
-        url: '/audios/c2_parque.mp3',
-        tipo: 'ambiente'
-      },
-      {
-        titulo: 'Área Residencial Tranquila',
-        descripcion: 'Ambiente residencial con baja densidad sonora',
-        url: '/audios/c2_residencial.mp3',
-        tipo: 'ambiente'
-      }
-    ]
-  },
-  {
-    id: 7,
-    name: 'Zona Chorrillos (Límite)',
-    lat: -12.1455,
-    lon: -77.0175,
-    decibeles: 35,
-    audios: [
-      {
-        titulo: 'Límite Distrital',
-        descripcion: 'Zona limítrofe con Chorrillos, muy tranquila',
-        url: '/audios/limite_chorrillos.mp3',
-        tipo: 'ambiente'
-      }
-    ]
+interface ExtractedSectorsData {
+  distrito: string
+  ciudad: string
+  pais: string
+  timestamp: string
+  total_sectores: number
+  estadisticas: {
+    promedio_db: number
+    max_db: number
+    min_db: number
+    sectores_alto_ruido: number
   }
-]
+  sectores: SectorData[]
+}
 
-
+// Función para cargar sectores extraídos desde el archivo JSON
+async function loadExtractedSectors(): Promise<SectorData[]> {
+  try {
+    const response = await fetch('/data/barranco_sectors_extracted.json')
+    if (!response.ok) {
+      throw new Error('No se pudo cargar el archivo de sectores')
+    }
+    
+    const data: ExtractedSectorsData = await response.json()
+    return data.sectores || []
+  } catch (error) {
+    console.error('Error cargando sectores extraídos:', error)
+    return []
+  }
+}
 
 // Función para obtener color y configuración de mancha según decibeles
 const getSoundVisualization = (decibeles: number) => {
@@ -201,306 +66,356 @@ const getSoundVisualization = (decibeles: number) => {
     return {
       color: '#dc2626', // rojo intenso
       fillColor: '#dc2626',
-      fillOpacity: 0.6,
-      radius: 80,
-      weight: 0,
-      className: 'sound-spot-high'
+      opacity: 0.6,
+      fillOpacity: 0.3,
+      radius: 35
     }
-  } else if (decibeles > 55) {
+  } else if (decibeles > 60) {
     return {
       color: '#ea580c', // naranja
       fillColor: '#ea580c', 
-      fillOpacity: 0.5,
-      radius: 60,
-      weight: 0,
-      className: 'sound-spot-medium-high'
+      opacity: 0.5,
+      fillOpacity: 0.25,
+      radius: 30
     }
-  } else if (decibeles > 35) {
+  } else if (decibeles > 45) {
     return {
-      color: '#ca8a04', // amarillo
-      fillColor: '#ca8a04',
-      fillOpacity: 0.4,
-      radius: 40,
-      weight: 0,
-      className: 'sound-spot-medium'
+      color: '#eab308', // amarillo
+      fillColor: '#eab308',
+      opacity: 0.4,
+      fillOpacity: 0.2,
+      radius: 25
     }
   } else {
     return {
       color: '#16a34a', // verde
       fillColor: '#16a34a',
-      fillOpacity: 0.3,
-      radius: 25,
-      weight: 0,
-      className: 'sound-spot-low'
+      opacity: 0.3,
+      fillOpacity: 0.15,
+      radius: 20
     }
   }
 }
 
 export default function AcousticMap() {
-  const [selectedSector, setSelectedSector] = useState<SectorData | null>(sectorsData[0])
-  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null)
+  const [selectedSector, setSelectedSector] = useState<SectorData | null>(null)
+  const [barrancoCoords, setBarrancoCoords] = useState<BarrancoCoordinates | null>(null)
+  const [sectorsData, setSectorsData] = useState<SectorData[]>([])
+  const [loading, setLoading] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [showAllSectors, setShowAllSectors] = useState(true)
-  const [selectedSectorTypes, setSelectedSectorTypes] = useState<string[]>(['SS-1A', 'SS-1B', 'SS-2A', 'SS-2B', 'SS-2C', 'C1', 'C2'])
-  const [barrancoData, setBarrancoData] = useState<BarrancoCoordinates | null>(null)
-  const [isLoadingCoordinates, setIsLoadingCoordinates] = useState(true)
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null)
 
-  // Cargar coordenadas reales de Barranco al montar el componente
   useEffect(() => {
-    const loadCoordinates = async () => {
-      setIsLoadingCoordinates(true)
-      const coordinates = await loadBarrancoCoordinates()
-      setBarrancoData(coordinates)
-      setIsLoadingCoordinates(false)
+    const loadData = async () => {
+      try {
+        // Cargar coordenadas de Barranco
+        const coords = await loadBarrancoCoordinates()
+        setBarrancoCoords(coords)
+
+        // Cargar sectores extraídos
+        const sectors = await loadExtractedSectors()
+        setSectorsData(sectors)
+        
+        // Seleccionar el primer sector por defecto
+        if (sectors.length > 0) {
+          setSelectedSector(sectors[0])
+        }
+      } catch (error) {
+        console.error('Error cargando datos:', error)
+      } finally {
+        setLoading(false)
+      }
     }
-    
-    loadCoordinates()
+
+    loadData()
   }, [])
 
-  // Función para reproducir audio
-  const playAudio = (audioUrl: string) => {
+  const handleSectorClick = (sector: SectorData) => {
+    setSelectedSector(sector)
+  }
+
+  const handleSectorHover = (sector: SectorData) => {
+    setSelectedSector(sector)
+  }
+
+  const handlePlayAudio = (url: string) => {
     if (currentAudio) {
       currentAudio.pause()
     }
-    
-    const audio = new Audio(audioUrl)
-    audio.play().catch(() => {
-      console.log('Audio no disponible:', audioUrl)
+
+    const audio = new Audio(url)
+    audio.play().catch((error) => {
+      console.error('Error reproduciendo audio:', error)
     })
-    
-    setCurrentAudio(audio)
-    setIsPlaying(true)
     
     audio.onended = () => {
       setIsPlaying(false)
+      setCurrentAudio(null)
     }
+
+    setCurrentAudio(audio)
+    setIsPlaying(true)
   }
 
-  // Función para pausar audio
-  const pauseAudio = () => {
+  const handlePauseAudio = () => {
     if (currentAudio) {
       currentAudio.pause()
-      setIsPlaying(false)
     }
+    setIsPlaying(false)
+    setCurrentAudio(null)
   }
 
-  // Función para manejar selección de sector (con throttling para hover)
-  const handleSectorSelect = (sector: SectorData) => {
-    // Solo cambiar si es realmente un sector diferente
-    if (selectedSector?.id === sector.id) return
-    
-    setSelectedSector(sector)
-    
-    // Solo pausar audio si está reproduciéndose, no cambiarlo automáticamente en hover
-    // El usuario puede decidir cuándo reproducir el audio del nuevo sector
-    if (currentAudio && isPlaying) {
-      currentAudio.pause()
-      setIsPlaying(false)
-    }
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p>Cargando datos de sectores...</p>
+        </div>
+      </div>
+    )
   }
+
+  const center: [number, number] = barrancoCoords ? barrancoCoords.center : [-12.140, -77.020]
 
   return (
-    <div className="w-full h-screen flex">
-      {/* Panel Izquierdo - Información y Medidor */}
-      <div className="w-1/4 p-4 bg-white border-r border-gray-200 overflow-y-auto">
-        {/* Información del Sector Actual */}
-        <div className="mb-6">
-          <div className={`p-4 rounded-lg text-white ${
-            selectedSector && selectedSector.decibeles > 75 ? 'bg-red-500' :
-            selectedSector && selectedSector.decibeles > 55 ? 'bg-orange-500' :
-            selectedSector && selectedSector.decibeles > 35 ? 'bg-yellow-500' :
-            'bg-green-500'
-          }`}>
-            <h3 className="text-lg font-bold mb-2">
-              📍 {selectedSector?.name || 'Selecciona un sector'}
+    <div className="flex flex-col lg:flex-row gap-6 p-6">
+      {/* Panel izquierdo - Información y controles */}
+      <div className="lg:w-1/4 space-y-6">
+        {/* Información del sector seleccionado */}
+        {selectedSector && (
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h3 className="text-xl font-bold text-gray-800 mb-2">
+              {selectedSector.name}
             </h3>
-            <div className="text-2xl font-bold">
-              {selectedSector?.decibeles || 0} dB
-            </div>
-            <p className="text-sm opacity-90">
-              {selectedSector && selectedSector.decibeles > 75 && '🔴 Nivel muy alto'}
-              {selectedSector && selectedSector.decibeles > 55 && selectedSector.decibeles <= 75 && '🟡 Nivel alto'}
-              {selectedSector && selectedSector.decibeles > 35 && selectedSector.decibeles <= 55 && '🟨 Nivel moderado'}
-              {selectedSector && selectedSector.decibeles <= 35 && '🟢 Nivel bajo'}
-            </p>
-          </div>
-        </div>
-
-        {/* Medidor de Decibeles */}
-        <div className="mb-6">
-          <DecibelMeter value={selectedSector?.decibeles || 0} />
-        </div>
-
-        {/* Control de Sectores */}
-        <div className="mb-6">
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold mb-3 text-gray-700">
-              🎛️ Control de Sectores
-            </h3>
-            
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-600">
-                  Mostrar todos los sectores
-                </label>
-                <input
-                  type="checkbox"
-                  checked={showAllSectors}
-                  onChange={(e) => setShowAllSectors(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                />
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">
+                {selectedSector.decibeles} dB
               </div>
-              
-              <div className="border-t pt-3">
-                <p className="text-xs text-gray-500 mb-2">Filtrar por tipo de sector:</p>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  {['SS-1A', 'SS-1B', 'SS-2A', 'SS-2B', 'SS-2C', 'C1', 'C2'].map((type) => (
-                    <label key={type} className="flex items-center space-x-1">
-                      <input
-                        type="checkbox"
-                        checked={selectedSectorTypes.includes(type)}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setSelectedSectorTypes([...selectedSectorTypes, type])
-                          } else {
-                            setSelectedSectorTypes(selectedSectorTypes.filter(t => t !== type))
-                          }
-                        }}
-                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                      />
-                      <span className="text-gray-600">{type}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="border-t pt-3">
-                <p className="text-xs text-gray-500 mb-1">Acciones rápidas:</p>
-                <div className="flex space-x-2">
-                  <button
-                    onClick={() => setSelectedSectorTypes(['SS-1A', 'SS-1B', 'SS-2A', 'SS-2B', 'SS-2C', 'C1', 'C2'])}
-                    className="px-2 py-1 text-xs bg-green-100 text-green-700 rounded hover:bg-green-200"
-                  >
-                    Todos
-                  </button>
-                  <button
-                    onClick={() => setSelectedSectorTypes([])}
-                    className="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200"
-                  >
-                    Ninguno
-                  </button>
-                </div>
+              <div className="text-sm text-gray-600 mt-1">
+                Nivel de ruido actual
               </div>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Estadísticas Generales */}
+        {/* Medidor de decibeles */}
+        {selectedSector && (
+          <DecibelMeter value={selectedSector.decibeles} />
+        )}
+
+        {/* Estadísticas generales */}
         <StatsPanel sectors={sectorsData} />
       </div>
 
-      {/* Mapa Central */}
-      <div className="flex-1 relative">
-        <MapContainer
-          center={barrancoData?.center || [-12.1410, -77.0225]}
-          zoom={15}
-          style={{ height: '100%', width: '100%' }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          
-          {/* Polígono de Barranco con coordenadas reales del GeoJSON */}
-          {barrancoData && !isLoadingCoordinates && (
-            <Polygon
-              positions={barrancoData.coordinates}
-              pathOptions={{
-                color: '#e74c3c',
-                weight: 2,
-                opacity: 0.9,
-                fillColor: '#3498db',
-                fillOpacity: 0.1,
-              }}
+      {/* Panel central - Mapa */}
+      <div className="lg:w-1/2">
+        <div className="bg-white rounded-xl shadow-lg p-4">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+            Mapa Acústico de Barranco
+          </h2>
+          <div className="h-96 lg:h-[500px] rounded-lg overflow-hidden">
+            <MapContainer
+              center={center}
+              zoom={15}
+              className="h-full w-full"
             >
-              <Popup>
-                <div className="p-3">
-                  <h4 className="font-bold text-lg text-red-600">Distrito de Barranco</h4>
-                  <p className="text-sm text-gray-600">
-                    Lima, Perú - Límites oficiales
-                  </p>
-                  <p className="text-xs text-gray-500 mt-2">
-                    {sectorsData.length} sectores monitoreados
-                  </p>
-                  <p className="text-xs text-green-600 mt-1">
-                    ✅ Coordenadas del archivo GeoJSON oficial
-                  </p>
-                </div>
-              </Popup>
-            </Polygon>
-          )}
-          
-          {sectorsData
-            .filter(sector => {
-              if (!showAllSectors) return false
-              const sectorType = sector.name.split(' ')[1] // Extraer tipo (SS-1A, SS-1B, etc.)
-              return selectedSectorTypes.includes(sectorType)
-            })
-            .map((sector) => {
-              const visualization = getSoundVisualization(sector.decibeles)
-              return (
-                <CircleMarker
-                  key={sector.id}
-                  center={[sector.lat, sector.lon]}
-                  pathOptions={visualization}
-                  radius={visualization.radius}
-                  eventHandlers={{
-                    mouseover: () => handleSectorSelect(sector), // Cambiar al hacer hover
-                    click: () => handleSectorSelect(sector), // Mantener también el click
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              
+              {/* Polígono de Barranco */}
+              {barrancoCoords && (
+                <Polygon
+                  positions={barrancoCoords.coordinates}
+                  pathOptions={{
+                    color: '#2563eb',
+                    weight: 3,
+                    opacity: 0.8,
+                    fillColor: '#3b82f6',
+                    fillOpacity: 0.1
                   }}
                 >
                   <Popup>
-                    <div className="p-3 max-w-xs">
-                      <h4 className="font-bold text-lg text-blue-600">{sector.name}</h4>
-                      <div className="mt-2 space-y-1">
-                        <p className="text-sm">
-                          <span className="font-semibold">Nivel de ruido:</span>
-                          <span className={`ml-2 px-2 py-1 rounded text-xs font-bold ${
-                            sector.decibeles > 75 ? 'bg-red-100 text-red-800' :
-                            sector.decibeles > 55 ? 'bg-orange-100 text-orange-800' :
-                            sector.decibeles > 35 ? 'bg-yellow-100 text-yellow-800' :
-                            'bg-green-100 text-green-800'
-                          }`}>
-                            {sector.decibeles} dB
-                          </span>
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          📍 Coordenadas: {sector.lat.toFixed(4)}, {sector.lon.toFixed(4)}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          🎵 {sector.audios.length} audio(s) disponible(s)
-                        </p>
-                      </div>
-                      <button
-                        onClick={() => handleSectorSelect(sector)}
-                        className="mt-3 w-full px-3 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors"
-                      >
-                        📊 Ver detalles completos
-                      </button>
+                    <div className="p-2">
+                      <h3 className="font-bold text-lg">Distrito de Barranco</h3>
+                      <p className="text-sm text-gray-600">Lima, Perú</p>
+                      <p className="text-xs mt-1">
+                        Sectores monitoreados: {sectorsData.length}
+                      </p>
                     </div>
                   </Popup>
-                </CircleMarker>
-              )
-            })}
-        </MapContainer>
+                </Polygon>
+              )}
+
+              {/* Sectores extraídos como polígonos delimitadores (sin interacción) */}
+              {sectorsData.map((sector) => (
+                sector.polygon && (
+                  <Polygon
+                    key={`sector-${sector.id}`}
+                    positions={sector.polygon}
+                    pathOptions={{
+                      color: sector.color || '#3b82f6',
+                      weight: 1.5,
+                      opacity: 0.9,
+                      fillColor: sector.color || '#3b82f6',
+                      fillOpacity: 0.5
+                    }}
+                  >
+                    <Popup>
+                      <div className="p-2">
+                        <h4 className="font-bold text-base">{sector.name}</h4>
+                        <p className="text-sm text-gray-600">
+                          Sector de monitoreo delimitado
+                        </p>
+                      </div>
+                    </Popup>
+                  </Polygon>
+                )
+              ))}
+
+              {/* Marcadores de sectores como puntos difuminados (mapa de calor) */}
+              {sectorsData.map((sector) => {
+                const visualization = getSoundVisualization(sector.decibeles)
+                return (
+                  <div key={`heatmap-${sector.id}`}>
+                    {/* Capa más exterior (muy difuminada) */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 4}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.02
+                      }}
+                    />
+                    {/* Capa exterior difuminada */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 3.2}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.04
+                      }}
+                    />
+                    {/* Capa media-exterior */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 2.6}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.06
+                      }}
+                    />
+                    {/* Capa media */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 2.1}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.08
+                      }}
+                    />
+                    {/* Capa intermedia */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 1.7}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.1
+                      }}
+                    />
+                    {/* Capa intermedia-interna */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 1.4}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.12
+                      }}
+                    />
+                    {/* Capa interna */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 1.1}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.15
+                      }}
+                    />
+                    {/* Núcleo central interactivo (más suave) */}
+                    <CircleMarker
+                      center={[sector.lat, sector.lon]}
+                      radius={visualization.radius * 0.8}
+                      pathOptions={{
+                        color: 'transparent',
+                        weight: 0,
+                        fillColor: visualization.fillColor,
+                        fillOpacity: 0.2
+                      }}
+                      eventHandlers={{
+                        click: () => handleSectorClick(sector),
+                        mouseover: (e) => {
+                          handleSectorHover(sector)
+                          e.target.setStyle({
+                            fillOpacity: 0.4
+                          })
+                        },
+                        mouseout: (e) => {
+                          e.target.setStyle({
+                            fillOpacity: 0.2
+                          })
+                        }
+                      }}
+                    >
+                      <Popup>
+                        <div className="p-3">
+                          <h4 className="font-bold text-lg">{sector.name}</h4>
+                          <div className="mt-2">
+                            <span className="text-2xl font-bold" style={{ color: visualization.color }}>
+                              {sector.decibeles} dB
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {sector.audios.length} audios disponibles
+                          </p>
+                          <button
+                            onClick={() => handleSectorClick(sector)}
+                            className="mt-2 px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600"
+                          >
+                            Seleccionar sector
+                          </button>
+                        </div>
+                      </Popup>
+                    </CircleMarker>
+                  </div>
+                )
+              })}
+            </MapContainer>
+          </div>
+        </div>
       </div>
 
-      {/* Panel Derecho - Audios */}
-      <div className="w-1/4 p-4 bg-gray-50 overflow-y-auto">
-        <AudioPanel
+      {/* Panel derecho - Audios */}
+      <div className="lg:w-1/4">
+        <AudioPanel 
           sector={selectedSector}
-          onPlayAudio={playAudio}
-          onPauseAudio={pauseAudio}
+          onPlayAudio={handlePlayAudio}
+          onPauseAudio={handlePauseAudio}
           isPlaying={isPlaying}
         />
       </div>

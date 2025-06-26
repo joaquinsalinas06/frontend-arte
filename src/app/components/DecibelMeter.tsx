@@ -13,7 +13,7 @@ export default function DecibelMeter({ value, maxValue = 100 }: DecibelMeterProp
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimatedValue(value)
-    }, 300)
+    }, 100)
     return () => clearTimeout(timer)
   }, [value])
 
@@ -54,7 +54,7 @@ export default function DecibelMeter({ value, maxValue = 100 }: DecibelMeterProp
               stroke={color}
               strokeWidth="2"
               strokeDasharray={`${percentage}, 100`}
-              className="transition-all duration-1000 ease-out"
+              className="transition-all duration-300 ease-out"
             />
           </svg>
           
@@ -107,7 +107,7 @@ export default function DecibelMeter({ value, maxValue = 100 }: DecibelMeterProp
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="h-2 rounded-full transition-all duration-1000 ease-out"
+            className="h-2 rounded-full transition-all duration-300 ease-out"
             style={{
               width: `${percentage}%`,
               backgroundColor: color
