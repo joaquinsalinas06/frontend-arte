@@ -60,6 +60,27 @@ async function loadExtractedSectors(): Promise<SectorData[]> {
   }
 }
 
+// Función para oscurecer un color hexadecimal para el borde
+function darkenColor(hex: string, amount: number = 80): string {
+  // Remover el # si existe
+  const color = hex.replace('#', '')
+  
+  // Convertir a RGB
+  const r = parseInt(color.substring(0, 2), 16)
+  const g = parseInt(color.substring(2, 4), 16)
+  const b = parseInt(color.substring(4, 6), 16)
+  
+  // Oscurecer cada componente más intensamente
+  const newR = Math.max(0, r - amount)
+  const newG = Math.max(0, g - amount)
+  const newB = Math.max(0, b - amount)
+  
+  // Convertir de vuelta a hex
+  const toHex = (n: number) => n.toString(16).padStart(2, '0')
+  
+  return `#${toHex(newR)}${toHex(newG)}${toHex(newB)}`
+}
+
 // Función para obtener color y configuración de mancha según decibeles
 const getSoundVisualization = (decibeles: number) => {
   if (decibeles > 75) {
@@ -279,11 +300,11 @@ export default function AcousticMap() {
                     key={`sector-${sector.id}`}
                     positions={sector.polygon}
                     pathOptions={{
-                      color: sector.color || '#3b82f6',
-                      weight: 1.5,
-                      opacity: 0.9,
+                      color: darkenColor(sector.color || '#3b82f6', 80),
+                      weight: 3,
+                      opacity: 1.0,
                       fillColor: sector.color || '#3b82f6',
-                      fillOpacity: 0.5
+                      fillOpacity: 0.2
                     }}
                   >
                     <Popup>
