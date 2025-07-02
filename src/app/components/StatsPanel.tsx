@@ -30,16 +30,20 @@ export default function StatsPanel({ sectors }: StatsPanelProps) {
   )
   const maxDecibels = Math.max(...sectors.map(s => s.decibeles))
   const minDecibels = Math.min(...sectors.map(s => s.decibeles))
-  const highNoiseSectors = sectors.filter(s => s.decibeles > 75).length
+  const highNoiseSectors = sectors.filter(s => s.decibeles > 60).length
   const totalAudios = sectors.reduce((sum, sector) => sum + sector.audios.length, 0)
 
   // Datos para el gráfico
   const chartData = sectors.map(sector => ({
     name: sector.name.split(' ')[0], // Solo primera palabra para que quepa
     decibeles: sector.decibeles,
-    fill: sector.decibeles > 75 ? '#ef4444' : 
-          sector.decibeles > 55 ? '#f97316' :
-          sector.decibeles > 35 ? '#eab308' : '#22c55e'
+    fill: sector.decibeles > 75 ? '#6b7280' : 
+          sector.decibeles > 70 ? '#7c3aed' :
+          sector.decibeles > 65 ? '#2563eb' :
+          sector.decibeles > 60 ? '#dc2626' :
+          sector.decibeles > 55 ? '#ea580c' :
+          sector.decibeles > 50 ? '#ca8a04' :
+          sector.decibeles > 45 ? '#eab308' : '#16a34a'
   }))
 
   return (
@@ -117,22 +121,29 @@ export default function StatsPanel({ sectors }: StatsPanelProps) {
         
         <div className="space-y-2">
           {[
-            { range: '0-35 dB', label: 'Muy silencioso', color: 'bg-green-500', count: sectors.filter(s => s.decibeles <= 35).length },
-            { range: '35-55 dB', label: 'Moderado', color: 'bg-yellow-500', count: sectors.filter(s => s.decibeles > 35 && s.decibeles <= 55).length },
-            { range: '55-75 dB', label: 'Alto', color: 'bg-orange-500', count: sectors.filter(s => s.decibeles > 55 && s.decibeles <= 75).length },
-            { range: '75+ dB', label: 'Muy alto', color: 'bg-red-500', count: sectors.filter(s => s.decibeles > 75).length }
+            { range: '<45 dB', label: 'Muy silencioso', color: '#16a34a', count: sectors.filter(s => s.decibeles < 45).length },
+            { range: '45-50 dB', label: 'Silencioso', color: '#eab308', count: sectors.filter(s => s.decibeles >= 45 && s.decibeles < 50).length },
+            { range: '50-55 dB', label: 'Moderado', color: '#ca8a04', count: sectors.filter(s => s.decibeles >= 50 && s.decibeles < 55).length },
+            { range: '55-60 dB', label: 'Alto', color: '#ea580c', count: sectors.filter(s => s.decibeles >= 55 && s.decibeles < 60).length },
+            { range: '60-65 dB', label: 'Muy alto', color: '#dc2626', count: sectors.filter(s => s.decibeles >= 60 && s.decibeles < 65).length },
+            { range: '65-70 dB', label: 'Excesivo', color: '#2563eb', count: sectors.filter(s => s.decibeles >= 65 && s.decibeles < 70).length },
+            { range: '70-75 dB', label: 'Peligroso', color: '#7c3aed', count: sectors.filter(s => s.decibeles >= 70 && s.decibeles < 75).length },
+            { range: '>75 dB', label: 'Extremo', color: '#6b7280', count: sectors.filter(s => s.decibeles >= 75).length }
           ].map((level, index) => (
             <div key={index} className="flex items-center justify-between text-sm">
               <div className="flex items-center">
-                <div className={`w-3 h-3 ${level.color} rounded-full mr-2`}></div>
-                <span className="text-gray-600">{level.range}</span>
+                <div className="w-3 h-3 rounded-full mr-2 border border-gray-300" style={{backgroundColor: level.color}}></div>
+                <span className="text-gray-800 font-medium">{level.range}</span>
               </div>
               <div className="flex items-center">
-                <span className="text-gray-500 mr-2">{level.count} sectores</span>
+                <span className="text-gray-700 mr-2 font-medium">{level.count} sectores</span>
                 <div className="w-16 bg-gray-200 rounded-full h-2">
                   <div
-                    className={`h-2 ${level.color} rounded-full`}
-                    style={{ width: `${(level.count / totalSectors) * 100}%` }}
+                    className="h-2 rounded-full"
+                    style={{ 
+                      width: `${(level.count / totalSectors) * 100}%`,
+                      backgroundColor: level.color
+                    }}
                   ></div>
                 </div>
               </div>

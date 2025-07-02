@@ -1,12 +1,13 @@
 'use client'
 
-import { Play, Pause, Volume2} from 'lucide-react'
+import { Play, Pause, Volume2, Plus } from 'lucide-react'
+import { useState } from 'react'
 
 interface AudioData {
   titulo: string
   descripcion: string
   url: string
-  tipo: 'ambiente' | 'trafico' | 'comercial'
+  tipo?: string
 }
 
 interface SectorData {
@@ -23,32 +24,67 @@ interface AudioPanelProps {
   onPlayAudio: (url: string) => void
   onPauseAudio: () => void
   isPlaying: boolean
+  currentAudioUrl?: string
+  onAddToMix?: (audioUrl: string, audioTitle: string) => void
 }
 
-export default function AudioPanel({ sector, onPlayAudio, onPauseAudio, isPlaying }: AudioPanelProps) {
-  const getAudioIcon = (tipo: string) => {
-    switch (tipo) {
-      case 'ambiente':
-        return '🌆'
-      case 'trafico':
-        return '🚗'
-      case 'comercial':
-        return '🏪'
-      default:
-        return '🎵'
+export default function AudioPanel({ 
+  sector, 
+  onPlayAudio, 
+  onPauseAudio, 
+  isPlaying, 
+  currentAudioUrl,
+  onAddToMix 
+}: AudioPanelProps) {
+  const [showingInfo, setShowingInfo] = useState<string | null>(null)
+  const getDecibelColor = (decibeles: number) => {
+    if (decibeles >= 75) {
+      return 'border-gray-500 bg-gray-50' // >75 - gray (extremo)
+    } else if (decibeles >= 70) {
+      return 'border-purple-500 bg-purple-50' // 70-75 - purple (peligroso)
+    } else if (decibeles >= 65) {
+      return 'border-blue-500 bg-blue-50' // 65-70 - blue (excesivo)
+    } else if (decibeles >= 60) {
+      return 'border-red-500 bg-red-50' // 60-65 - red (muy alto)
+    } else if (decibeles >= 55) {
+      return 'border-orange-500 bg-orange-50' // 55-60 - orange (alto)
+    } else if (decibeles >= 50) {
+      return 'border-yellow-600 bg-yellow-50' // 50-55 - dark yellow (moderado)
+    } else if (decibeles >= 45) {
+      return 'border-yellow-500 bg-yellow-50' // 45-50 - light yellow (tranquilo)
+    } else {
+      return 'border-green-500 bg-green-50' // <45 - green (silencioso)
     }
   }
 
-  const getAudioColor = (tipo: string) => {
-    switch (tipo) {
-      case 'ambiente':
-        return 'border-green-500 bg-green-50'
-      case 'trafico':
-        return 'border-red-500 bg-red-50'
-      case 'comercial':
-        return 'border-orange-500 bg-orange-50'
-      default:
-        return 'border-blue-500 bg-blue-50'
+  const getDecibelIcon = (decibeles: number) => {
+    if (decibeles >= 75) {
+      return '⚫' // Extremo
+    } else if (decibeles >= 70) {
+      return '🟣' // Peligroso
+    } else if (decibeles >= 65) {
+      return '🔵' // Excesivo
+    } else if (decibeles >= 60) {
+      return '🔴' // Muy alto
+    } else if (decibeles >= 55) {
+      return '🟠' // Alto
+    } else if (decibeles >= 50) {
+      return '🟤' // Moderado
+    } else if (decibeles >= 45) {
+      return '🟡' // Tranquilo
+    } else {
+      return '🟢' // Silencioso
+    }
+  }
+
+
+  const handleAudioClick = (audioUrl: string) => {
+    if (showingInfo === audioUrl) {
+      setShowingInfo(null)
+      onPauseAudio()
+    } else {
+      setShowingInfo(audioUrl)
+      onPlayAudio(audioUrl)
     }
   }
 
@@ -74,66 +110,105 @@ export default function AudioPanel({ sector, onPlayAudio, onPauseAudio, isPlayin
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {sector.audios.map((audio, index) => (
           <div
             key={index}
-            className={`border-2 rounded-lg p-4 ${getAudioColor(audio.tipo)} hover:shadow-md transition-shadow`}
+            className={`border-2 rounded-lg p-3 sm:p-4 ${getDecibelColor(sector.decibeles)} hover:shadow-lg transition-all cursor-pointer relative touch-manipulation`}
+            onClick={() => handleAudioClick(audio.url)}
           >
             {/* Header del audio */}
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
               <div className="flex items-center">
-                <span className="text-2xl mr-3">{getAudioIcon(audio.tipo)}</span>
+                <span className="text-xl sm:text-2xl mr-2 sm:mr-3">{getDecibelIcon(sector.decibeles)}</span>
                 <div>
-                  <h3 className="font-semibold text-gray-800">{audio.titulo}</h3>
-                  <span className="text-xs text-gray-500 uppercase font-medium">
-                    {audio.tipo}
+                  <h3 className="font-semibold text-gray-800 text-sm sm:text-base">{audio.titulo}</h3>
+                  <span className="text-xs text-gray-500 font-medium">
+                    {sector.decibeles} dB
                   </span>
                 </div>
               </div>
+              
             </div>
 
-            {/* Descripción */}
-            <p className="text-sm text-gray-600 mb-4 italic">
-              {audio.descripcion}
-            </p>
+            {/* Información expandida cuando se hace click */}
+            {showingInfo === audio.url && (
+              <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-white bg-opacity-50 rounded-lg">
+                <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 italic">
+                  {audio.descripcion}
+                </p>
+                
+                {/* Controles de audio principales */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-0 mb-2 sm:mb-3">
+                  {isPlaying && currentAudioUrl === audio.url ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onPauseAudio()
+                      }}
+                      className="flex items-center justify-center space-x-2 bg-gray-500 hover:bg-gray-600 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm touch-manipulation"
+                    >
+                      <Pause className="w-4 h-4" />
+                      <span>Pausar</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onPlayAudio(audio.url)
+                      }}
+                      className="flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm touch-manipulation"
+                    >
+                      <Play className="w-4 h-4" />
+                      <span className="hidden sm:inline">Reproducir completo</span>
+                      <span className="sm:hidden">Reproducir</span>
+                    </button>
+                  )}
 
-            {/* Controles de audio */}
-            <div className="flex items-center justify-between">
-              <button
-                onClick={() => onPlayAudio(audio.url)}
-                className="flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
-                disabled={isPlaying}
-              >
-                <Play className="w-4 h-4" />
-                <span>Reproducir</span>
-              </button>
+                </div>
 
-              {isPlaying && (
+
+                {/* Waveform animado */}
+                <div className="flex items-center space-x-1">
+                  {Array.from({ length: 30 }, (_, i) => (
+                    <div
+                      key={i}
+                      className={`w-1 bg-gray-400 rounded-full ${
+                        isPlaying && currentAudioUrl === audio.url ? 'animate-pulse' : ''
+                      }`}
+                      style={{
+                        height: `${Math.random() * 16 + 8}px`,
+                        animationDelay: `${i * 0.1}s`
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Mix button and instructions */}
+            <div className="mt-2 sm:mt-3 space-y-2">
+              {!showingInfo && (
+                <div className="text-xs text-gray-500">
+                  <span className="sm:hidden">Toca para más opciones</span>
+                  <span className="hidden sm:inline">Click para más opciones y controles</span>
+                </div>
+              )}
+              
+              {/* Mix button outside the card */}
+              {onAddToMix && (
                 <button
-                  onClick={onPauseAudio}
-                  className="flex items-center space-x-2 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    onAddToMix(audio.url, audio.titulo)
+                  }}
+                  className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-3 py-2 rounded-lg transition-all shadow-md text-sm font-medium touch-manipulation"
                 >
-                  <Pause className="w-4 h-4" />
-                  <span>Pausar</span>
+                  <Plus className="w-4 h-4" />
+                  <span className="hidden sm:inline">Añadir a mi mezcla</span>
+                  <span className="sm:hidden">Añadir</span>
                 </button>
               )}
-            </div>
-
-            {/* Simulación de waveform */}
-            <div className="mt-3 flex items-center space-x-1">
-              {Array.from({ length: 30 }, (_, i) => (
-                <div
-                  key={i}
-                  className={`w-1 bg-gray-300 rounded-full ${
-                    isPlaying ? 'animate-pulse' : ''
-                  }`}
-                  style={{
-                    height: `${Math.random() * 16 + 4}px`,
-                    animationDelay: `${i * 0.1}s`
-                  }}
-                />
-              ))}
             </div>
           </div>
         ))}
@@ -142,23 +217,15 @@ export default function AudioPanel({ sector, onPlayAudio, onPauseAudio, isPlayin
       {/* Información adicional */}
       <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
         <h4 className="font-semibold text-blue-800 mb-2">
-          💡 Información
+          💡 Cómo usar
         </h4>
         <ul className="text-sm text-blue-700 space-y-1">
-          <li>• Los audios se reproducen automáticamente</li>
-          <li>• Cada sector tiene diferentes tipos de sonidos</li>
-          <li>• Los datos se actualizan en tiempo real</li>
+          <li>• <strong>Hover en mapa:</strong> Escucha preview de la zona</li>
+          <li>• <strong>Click:</strong> Expande para ver controles completos</li>
+          <li>• <strong>Colores:</strong> Coinciden con la escala de decibeles</li>
         </ul>
       </div>
 
-      {/* Nota sobre archivos de audio */}
-      <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-        <p className="text-xs text-yellow-700">
-          <strong>Nota:</strong> Los archivos de audio deben estar en la carpeta 
-          <code className="bg-yellow-100 px-1 rounded">/public/audios/</code> 
-          para funcionar correctamente.
-        </p>
-      </div>
     </div>
   )
 }

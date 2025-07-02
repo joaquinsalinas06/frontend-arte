@@ -22,17 +22,21 @@ export default function DecibelMeter({ value, maxValue = 100 }: DecibelMeterProp
   
   // Determinar color según el nivel
   const getColor = (val: number) => {
-    if (val > 75) return '#ef4444' // red-500
-    if (val > 55) return '#f97316' // orange-500
-    if (val > 35) return '#eab308' // yellow-500
-    return '#22c55e' // green-500
+    if (val > 75) return '#6b7280' // gray
+    if (val > 70) return '#7c3aed' // purple
+    if (val > 65) return '#2563eb' // blue
+    if (val > 60) return '#dc2626' // red
+    if (val > 55) return '#ea580c' // orange
+    if (val > 50) return '#ca8a04' // darker yellow
+    if (val > 45) return '#eab308' // light yellow
+    return '#16a34a' // green
   }
 
   const color = getColor(animatedValue)
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
-      <h3 className="text-lg font-semibold mb-4 text-center text-gray-700">
+      <h3 className="text-lg font-semibold mb-4 text-center text-gray-800">
         Medidor de Decibeles
       </h3>
       
@@ -61,39 +65,63 @@ export default function DecibelMeter({ value, maxValue = 100 }: DecibelMeterProp
           {/* Valor en el centro */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <div className="text-2xl font-bold" style={{ color }}>
+              <div className="text-2xl font-bold text-gray-800">
                 {Math.round(animatedValue)}
               </div>
-              <div className="text-xs text-gray-500">dB</div>
+              <div className="text-xs text-gray-600 font-medium">dB</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Escala de referencia */}
-      <div className="space-y-2">
+      <div className="space-y-1 text-black">
         <div className="flex justify-between items-center text-xs">
           <span className="flex items-center">
-            <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-            0-35 dB: Muy silencioso
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#16a34a'}}></div>
+            &lt;45 dB: Muy silencioso
           </span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="flex items-center">
-            <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-            35-55 dB: Moderado
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#eab308'}}></div>
+            45-50 dB: Silencioso
           </span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="flex items-center">
-            <div className="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>
-            55-75 dB: Alto
+            <div className="w-3 h-3 rounded-full mr-2 text-black" style={{backgroundColor: '#ca8a04'}}></div>
+            50-55 dB: Moderado
           </span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="flex items-center">
-            <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-            75+ dB: Muy alto
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#ea580c'}}></div>
+            55-60 dB: Alto
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-xs">
+          <span className="flex items-center">
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#dc2626'}}></div>
+            60-65 dB: Muy alto
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-xs">
+          <span className="flex items-center">
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#2563eb'}}></div>
+            65-70 dB: Excesivo
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-xs">
+          <span className="flex items-center">
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#7c3aed'}}></div>
+            70-75 dB: Peligroso
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-xs">
+          <span className="flex items-center">
+            <div className="w-3 h-3 rounded-full mr-2" style={{backgroundColor: '#6b7280'}}></div>
+            &gt;75 dB: Extremo
           </span>
         </div>
       </div>

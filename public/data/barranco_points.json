@@ -1,0 +1,240 @@
+{
+  "distrito": "Barranco",
+  "ciudad": "Lima",
+  "pais": "Perú",
+  "timestamp": "2025-07-01T09:31:26.592141",
+  "total_puntos": 14,
+  "estadisticas": {
+    "promedio_db": 69.2,
+    "max_db": 81.3,
+    "min_db": 56.9,
+    "sectores_alto_ruido": 6
+  },
+  "metodo_extraccion": "WhatsApp GeoJSON",
+  "puntos": [
+    {
+      "id": 1,
+      "name": "Avenida Prolongación El Sol",
+      "lat": -12.137674485425489,
+      "lon": -77.01634064343763,
+      "decibeles": 69.1,
+      "audios": [
+        {
+          "titulo": "Tráfico intenso - Zona 1",
+          "descripcion": "Zona muy concurrida por carros y negocios de mecánica.",
+          "url": "/audios/zona1.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592009"
+    },
+    {
+      "id": 2,
+      "name": "Calle Catalino Miranda",
+      "lat": -12.137165840862446,
+      "lon": -77.01588467078476,
+      "decibeles": 61.5,
+      "audios": [
+        {
+          "titulo": "Tráfico moderado - Zona 2",
+          "descripcion": "Zona no tan transcurrida por carros, pero pasan de vez en cuando.",
+          "url": "/audios/zona2.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592049"
+    },
+    {
+      "id": 3,
+      "name": "Jirón Aurelio Souza",
+      "lat": -12.140075875836748,
+      "lon": -77.014306991576,
+      "decibeles": 64,
+      "audios": [
+        {
+          "titulo": "Tráfico medio - Zona 3",
+          "descripcion": "Zona medianamente transcurrida por carros y negocios de mecánica.",
+          "url": "/audios/zona3.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592057"
+    },
+    {
+      "id": 4,
+      "name": "Jirón Luna Pizarro",
+      "lat": -12.142181064634222,
+      "lon": -77.01521512436928,
+      "decibeles": 68,
+      "audios": [
+        {
+          "titulo": "Ambiente de mercado - Zona 4",
+          "descripcion": "Zona de mercados con actividad constante.",
+          "url": "/audios/zona4.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592062"
+    },
+    {
+      "id": 5,
+      "name": "Ciclovía Balta",
+      "lat": -12.142210731490204,
+      "lon": -77.01699034956397,
+      "decibeles": 77.5,
+      "audios": [
+        {
+          "titulo": "Tráfico intenso de buses - Zona 5",
+          "descripcion": "Zona muy concurrida por autos y muchos buses.",
+          "url": "/audios/zona5.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592066"
+    },
+    {
+      "id": 6,
+      "name": "Ciclovía Plaza Butters",
+      "lat": -12.143419652969431,
+      "lon": -77.01578410681664,
+      "decibeles": 74.4,
+      "audios": [
+        {
+          "titulo": "Tránsito pesado - Zona 6",
+          "descripcion": "Zona muy transcurrida por peatones y autos, mucho tránsito de buses.",
+          "url": "/audios/zona6.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592070"
+    },
+    {
+      "id": 7,
+      "name": "Jirón Tiravanti",
+      "lat": -12.144383840176532,
+      "lon": -77.01579047645647,
+      "decibeles": 75.3,
+      "audios": [
+        {
+          "titulo": "Mototaxis y buses - Zona 7",
+          "descripcion": "Zona transcurrida por mototaxis y buses.",
+          "url": "/audios/zona7.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592075"
+    },
+    {
+      "id": 8,
+      "name": "Jirón Vigil",
+      "lat": -12.144260647454125,
+      "lon": -77.01710358986166,
+      "decibeles": 76.8,
+      "audios": [
+        {
+          "titulo": "Ambiente similar a zona 7",
+          "descripcion": "Mismo que zona 7: tránsito mixto y constante.",
+          "url": "/audios/zona8.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592079"
+    },
+    {
+      "id": 9,
+      "name": "Jirón García y García",
+      "lat": -12.144602424401626,
+      "lon": -77.0181995706547,
+      "decibeles": 56.9,
+      "audios": [
+        {
+          "titulo": "Zona tranquila - Zona 9",
+          "descripcion": "Zona tranquila donde casi nunca pasan autos.",
+          "url": "/audios/zona9.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592083"
+    },
+    {
+      "id": 10,
+      "name": "Jirón Manuel Segura",
+      "lat": -12.146463996169322,
+      "lon": -77.0183247468061,
+      "decibeles": 65.3,
+      "audios": [
+        {
+          "titulo": "Zona tranquila con peatones - Zona 10",
+          "descripcion": "Zona tranquila con más tránsito de personas.",
+          "url": "/audios/zona10.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592087"
+    },
+    {
+      "id": 11,
+      "name": "Jirón Franklin Roosevelt",
+      "lat": -12.14694978267286,
+      "lon": -77.01749023922383,
+      "decibeles": 81.3,
+      "audios": [
+        {
+          "titulo": "Tráfico mixto y ruidoso - Zona 11",
+          "descripcion": "Mucho tránsito de autos, motos, buses y mototaxis.",
+          "url": "/audios/zona11.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592091"
+    },
+    {
+      "id": 12,
+      "name": "Jirón Lima",
+      "lat": -12.148364237058981,
+      "lon": -77.0183861379707,
+      "decibeles": 75,
+      "audios": [
+        {
+          "titulo": "Tráfico pesado - Zona 12",
+          "descripcion": "Mismo que zona 11, alto nivel de ruido.",
+          "url": "/audios/zona12.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592095"
+    },
+    {
+      "id": 13,
+      "name": "Jirón Lima",
+      "lat": -12.149748011740412,
+      "lon": -77.01920721261556,
+      "decibeles": 64.4,
+      "audios": [
+        {
+          "titulo": "Tráfico de autos particulares - Zona 13",
+          "descripcion": "Más presencia de carros particulares, ruido moderado.",
+          "url": "/audios/zona13.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592099"
+    },
+    {
+      "id": 14,
+      "name": "Jirón Mariano de los Santos",
+      "lat": -12.150743883883493,
+      "lon": -77.0182407729242,
+      "decibeles": 58.6,
+      "audios": [
+        {
+          "titulo": "Zona residencial - Zona 14",
+          "descripcion": "Zona con poco o nulo tránsito de autos, ambiente residencial.",
+          "url": "/audios/zona14.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-01T09:31:26.592103"
+    }
+  ]
+}
