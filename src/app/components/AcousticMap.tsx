@@ -800,19 +800,6 @@ export default function AcousticMap() {
                       e.target.setStyle({
                         fillOpacity: 0.2
                       })
-                    },
-                    // Mobile touch events
-                    touchstart: (e) => {
-                      handleSectorHover(sector)
-                      e.target.setStyle({
-                        fillOpacity: 0.4
-                      })
-                    },
-                    touchend: (e) => {
-                      // On mobile, keep the audio playing after touch
-                      e.target.setStyle({
-                        fillOpacity: 0.2
-                      })
                     }
                   }}
                 >
