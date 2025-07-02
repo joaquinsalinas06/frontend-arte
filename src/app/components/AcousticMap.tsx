@@ -6,64 +6,10 @@ import DecibelMeter from '@/app/components/DecibelMeter'
 import AudioPanel from '@/app/components/AudioPanel'
 import StatsPanel from '@/app/components/StatsPanel'
 import { loadBarrancoCoordinates, BarrancoCoordinates } from '@/app/utils/geoJsonLoader'
+import { SectorData, SectorsData, PointsData } from '@/app/types'
 
 // Importar estilos de Leaflet
 import 'leaflet/dist/leaflet.css'
-
-// Tipos de datos
-interface AudioData {
-  titulo: string
-  descripcion: string
-  url: string
-  tipo?: string
-}
-
-interface SectorData {
-  id: number
-  name: string
-  lat: number
-  lon: number
-  decibeles: number
-  polygon?: [number, number][]
-  color?: string
-  audios: AudioData[]
-}
-
-interface SectorsData {
-  distrito: string
-  ciudad: string
-  pais: string
-  timestamp: string
-  total_sectores: number
-  estadisticas: {
-    promedio_db: number
-    max_db: number
-    min_db: number
-    sectores_alto_ruido: number
-  }
-  sectores: Array<{
-    id: number
-    name: string
-    polygon: [number, number][]
-    sector_type: string
-    color: string
-  }>
-}
-
-interface PointsData {
-  distrito: string
-  ciudad: string
-  pais: string
-  timestamp: string
-  total_puntos: number
-  estadisticas: {
-    promedio_db: number
-    max_db: number
-    min_db: number
-    sectores_alto_ruido: number
-  }
-  puntos: SectorData[]
-}
 
 // Función para cargar sectores (polígonos) desde el archivo JSON
 async function loadSectors(): Promise<Array<{id: number, name: string, polygon: [number, number][], sector_type: string, color: string}>> {
@@ -235,7 +181,7 @@ export default function AcousticMap() {
   const [loading, setLoading] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null)
-  const [currentAudioUrl, setCurrentAudioUrl] = useState<string | null>(null)
+  const [currentAudioUrl, setCurrentAudioUrl] = useState<string | undefined>(undefined)
   const [mixAudios, setMixAudios] = useState<{url: string, title: string}[]>([])
   const [hoverAudio, setHoverAudio] = useState<HTMLAudioElement | null>(null)
   const [showMixPopup, setShowMixPopup] = useState(false)
@@ -395,7 +341,7 @@ export default function AcousticMap() {
     audio.onended = () => {
       setIsPlaying(false)
       setCurrentAudio(null)
-      setCurrentAudioUrl(null)
+      setCurrentAudioUrl(undefined)
     }
 
     setCurrentAudio(audio)
@@ -409,7 +355,7 @@ export default function AcousticMap() {
     }
     setIsPlaying(false)
     setCurrentAudio(null)
-    setCurrentAudioUrl(null)
+    setCurrentAudioUrl(undefined)
   }
 
   const generateAudioMix = async () => {

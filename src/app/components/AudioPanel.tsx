@@ -2,22 +2,7 @@
 
 import { Play, Pause, Volume2, Plus } from 'lucide-react'
 import { useState } from 'react'
-
-interface AudioData {
-  titulo: string
-  descripcion: string
-  url: string
-  tipo?: string
-}
-
-interface SectorData {
-  id: number
-  name: string
-  lat: number
-  lon: number
-  decibeles: number
-  audios: AudioData[]
-}
+import { SectorData } from '../types'
 
 interface AudioPanelProps {
   sector: SectorData | null
