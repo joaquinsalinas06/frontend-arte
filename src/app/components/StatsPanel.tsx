@@ -101,32 +101,33 @@ export default function StatsPanel({ sectors }: StatsPanelProps) {
       {/* Rangos de ruido */}
       <div className="bg-white p-4 rounded-lg shadow-md">
         <h4 className="font-semibold mb-3 text-gray-700">
-          Distribución por Niveles
+          Distribución por Niveles ({totalSectors} muestras)
         </h4>
         
         <div className="space-y-2">
           {[
-            { range: '<45 dB', label: 'Muy silencioso', color: '#16a34a', count: sectors.filter(s => s.decibeles < 45).length },
-            { range: '45-50 dB', label: 'Silencioso', color: '#eab308', count: sectors.filter(s => s.decibeles >= 45 && s.decibeles < 50).length },
-            { range: '50-55 dB', label: 'Moderado', color: '#ca8a04', count: sectors.filter(s => s.decibeles >= 50 && s.decibeles < 55).length },
-            { range: '55-60 dB', label: 'Alto', color: '#ea580c', count: sectors.filter(s => s.decibeles >= 55 && s.decibeles < 60).length },
-            { range: '60-65 dB', label: 'Muy alto', color: '#dc2626', count: sectors.filter(s => s.decibeles >= 60 && s.decibeles < 65).length },
-            { range: '65-70 dB', label: 'Excesivo', color: '#2563eb', count: sectors.filter(s => s.decibeles >= 65 && s.decibeles < 70).length },
-            { range: '70-75 dB', label: 'Peligroso', color: '#7c3aed', count: sectors.filter(s => s.decibeles >= 70 && s.decibeles < 75).length },
-            { range: '>75 dB', label: 'Extremo', color: '#6b7280', count: sectors.filter(s => s.decibeles >= 75).length }
+            { range: '< 50 dB', label: 'Muy silencioso', color: '#16a34a', count: sectors.filter(s => s.decibeles < 50).length },
+            { range: '50-55 dB', label: 'Silencioso', color: '#22c55e', count: sectors.filter(s => s.decibeles >= 50 && s.decibeles < 55).length },
+            { range: '55-60 dB', label: 'Moderado', color: '#eab308', count: sectors.filter(s => s.decibeles >= 55 && s.decibeles < 60).length },
+            { range: '60-65 dB', label: 'Moderado-Alto', color: '#f59e0b', count: sectors.filter(s => s.decibeles >= 60 && s.decibeles < 65).length },
+            { range: '65-70 dB', label: 'Alto', color: '#ea580c', count: sectors.filter(s => s.decibeles >= 65 && s.decibeles < 70).length },
+            { range: '70-75 dB', label: 'Muy Alto', color: '#dc2626', count: sectors.filter(s => s.decibeles >= 70 && s.decibeles < 75).length },
+            { range: '≥ 75 dB', label: 'Extremo', color: '#991b1b', count: sectors.filter(s => s.decibeles >= 75).length }
           ].map((level, index) => (
             <div key={index} className="flex items-center justify-between text-sm">
               <div className="flex items-center">
                 <div className="w-3 h-3 rounded-full mr-2 border border-gray-300" style={{backgroundColor: level.color}}></div>
                 <span className="text-gray-800 font-medium">{level.range}</span>
+                <span className="text-gray-500 text-xs ml-1">({level.label})</span>
               </div>
               <div className="flex items-center">
-                <span className="text-gray-700 mr-2 font-medium">{level.count} sectores</span>
-                <div className="w-16 bg-gray-200 rounded-full h-2">
+                <span className="text-gray-700 mr-2 font-medium">{level.count}</span>
+                <span className="text-gray-500 text-xs mr-2">({Math.round((level.count / totalSectors) * 100)}%)</span>
+                <div className="w-12 bg-gray-200 rounded-full h-2">
                   <div
-                    className="h-2 rounded-full"
+                    className="h-2 rounded-full transition-all duration-300"
                     style={{ 
-                      width: `${(level.count / totalSectors) * 100}%`,
+                      width: `${Math.max(4, (level.count / totalSectors) * 100)}%`,
                       backgroundColor: level.color
                     }}
                   ></div>
@@ -134,6 +135,12 @@ export default function StatsPanel({ sectors }: StatsPanelProps) {
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="mt-3 pt-3 border-t border-gray-200">
+          <div className="text-xs text-gray-500 text-center">
+            Total de puntos de medición: {totalSectors} | Promedio general: {averageDecibels} dB
+          </div>
         </div>
       </div>
 

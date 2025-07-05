@@ -2,13 +2,13 @@
   "distrito": "Barranco",
   "ciudad": "Lima",
   "pais": "Perú",
-  "timestamp": "2025-07-01T09:31:26.592141",
-  "total_puntos": 14,
+  "timestamp": "2025-07-04T18:48:12.903429",
+  "total_puntos": 83,
   "estadisticas": {
-    "promedio_db": 69.2,
-    "max_db": 81.3,
-    "min_db": 56.9,
-    "sectores_alto_ruido": 6
+    "promedio_db": 65.3,
+    "max_db": 139.49,
+    "min_db": 49.42,
+    "sectores_alto_ruido": 15
   },
   "metodo_extraccion": "WhatsApp GeoJSON",
   "puntos": [
@@ -235,6 +235,1110 @@
         }
       ],
       "timestamp": "2025-07-01T09:31:26.592103"
+    },
+    {
+      "id": 16,
+      "name": "Independencia, Barranco, Lima, Peru",
+      "lat": -12.1554174,
+      "lon": -77.0211696,
+      "decibeles": 64.45,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Independencia, Barranco, Lima, Peru",
+          "descripcion": "Vía vecinal con tránsito de autos y motos, algunos comercios y casas.",
+          "url": "/audios/independencia.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 17,
+      "name": "av comandante montero rosas, Barranco, Lima, Peru",
+      "lat": -12.1549464,
+      "lon": -77.0218421,
+      "decibeles": 70.86,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av comandante montero rosas, Barranco, Lima, Peru",
+          "descripcion": "Vía principal, curso vehicular medio‑alto, negocios y residencias.",
+          "url": "/audios/monterorosas.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 18,
+      "name": "malecon, Barranco, Lima, Peru",
+      "lat": -12.147009,
+      "lon": -77.0237905,
+      "decibeles": 65.46,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en malecon, Barranco, Lima, Peru",
+          "descripcion": "Zona costera muy activa: peatones, ciclistas, autos de paseo y cafés con vista al mar.",
+          "url": "/audios/malecon.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 19,
+      "name": "lavalle, Barranco, Lima, Peru",
+      "lat": -12.1535724,
+      "lon": -77.0236202,
+      "decibeles": 69.83,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en lavalle, Barranco, Lima, Peru",
+          "descripcion": "Cercana al malecón y miradores, tráfico frecuente y actividad turística.",
+          "url": "/audios/Lavalle.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 20,
+      "name": "bresciani, Barranco, Lima, Peru",
+      "lat": -12.1522666,
+      "lon": -77.0235458,
+      "decibeles": 70.45,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en bresciani, Barranco, Lima, Peru",
+          "descripcion": "flujo constante, cerca a áreas residenciales y recreativas.",
+          "url": "/audios/Bresciani.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 21,
+      "name": "av prolongacion general jose de san martin, Barranco, Lima, Peru",
+      "lat": -12.1423494,
+      "lon": -77.0232168,
+      "decibeles": 67.74,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av prolongacion general jose de san martin, Barranco, Lima, Peru",
+          "descripcion": "Zona con ferias y restaurantes; tráfico moderado.",
+          "url": "/audios/prolongacionjose.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 22,
+      "name": "av genova, Barranco, Lima, Peru",
+      "lat": -12.1464162,
+      "lon": -77.0223291,
+      "decibeles": 68.1,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av genova, Barranco, Lima, Peru",
+          "descripcion": "flujo constante con comercios y conexión vial entre zonas.",
+          "url": "/audios/genova.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 23,
+      "name": "malecon saenz peña, Barranco, Lima, Peru",
+      "lat": -12.1429228,
+      "lon": -77.0249279,
+      "decibeles": 63.2,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en malecon saenz peña, Barranco, Lima, Peru",
+          "descripcion": "Zona bohemia, cafés y arte, flujo peatonal y vehicular moderado.",
+          "url": "/audios/maleconsaenz.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 24,
+      "name": "calle pedro martinto, Barranco, Lima, Peru",
+      "lat": -12.1405385,
+      "lon": -77.0241077,
+      "decibeles": 70.91,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en calle pedro martinto, Barranco, Lima, Peru",
+          "descripcion": "Cerca de avenidas y tráfico intenso, zona activa.",
+          "url": "/audios/pedromartinto.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 25,
+      "name": "av tejada, Barranco, Lima, Peru",
+      "lat": -12.1317221,
+      "lon": -77.0202265,
+      "decibeles": 68.39,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av tejada, Barranco, Lima, Peru",
+          "descripcion": "Vial principal, flujo constante de autos y transporte público.",
+          "url": "/audios/Avtejada.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 26,
+      "name": "av reducto, Barranco, Lima, Peru",
+      "lat": -12.1354038,
+      "lon": -77.0228939,
+      "decibeles": 65.44,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av reducto, Barranco, Lima, Peru",
+          "descripcion": "Zona intermedia, con comercios locales y tráfico moderado.",
+          "url": "/audios/Avreducto.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 27,
+      "name": "av paseo la republica, Barranco, Lima, Peru",
+      "lat": -12.1334662,
+      "lon": -77.0206218,
+      "decibeles": 71.22,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av paseo la republica, Barranco, Lima, Peru",
+          "descripcion": "tráfico pesado, autos y buses.",
+          "url": "/audios/paseo.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 28,
+      "name": "calle felipe sassone, Barranco, Lima, Peru",
+      "lat": -12.1337286,
+      "lon": -77.019601,
+      "decibeles": 61.98,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en calle felipe sassone, Barranco, Lima, Peru",
+          "descripcion": "Residencial con flujo leve, ambiente calmado.",
+          "url": "/audios/Felipesassone.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 29,
+      "name": "alfonso cobian, Barranco, Lima, Peru",
+      "lat": -12.1329729,
+      "lon": -77.0197404,
+      "decibeles": 60.14,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en alfonso cobian, Barranco, Lima, Peru",
+          "descripcion": "Calle tranquila y residencial, menor tránsito.",
+          "url": "/audios/Alfonsocovian.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 30,
+      "name": "calle francisco del castillo, Barranco, Lima, Peru",
+      "lat": -12.1325769,
+      "lon": -77.0206061,
+      "decibeles": 62.46,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en calle francisco del castillo, Barranco, Lima, Peru",
+          "descripcion": "residencial y poco movimiento.",
+          "url": "/audios/castillo.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 31,
+      "name": "av ramon ribeyro, Barranco, Lima, Peru",
+      "lat": -12.1321037,
+      "lon": -77.0187147,
+      "decibeles": 68.8,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en av ramon ribeyro, Barranco, Lima, Peru",
+          "descripcion": "Zona activa, tráfico frecuente y varios comercios.",
+          "url": "/audios/ribeyro.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 32,
+      "name": "calle pedro dulanto, Barranco, Lima, Peru",
+      "lat": -12.1318556,
+      "lon": -77.0194772,
+      "decibeles": 61.86,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en calle pedro dulanto, Barranco, Lima, Peru",
+          "descripcion": "Residencial, entorno calmado con vecinos.",
+          "url": "/audios/dulanto.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 33,
+      "name": "plaza flores, Barranco, Lima, Peru",
+      "lat": -12.1350227,
+      "lon": -77.0187817,
+      "decibeles": 65.81,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en plaza flores, Barranco, Lima, Peru",
+          "descripcion": "Plaza urbana, feria y flujo de gente.",
+          "url": "/audios/Plazaflores.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 34,
+      "name": "panama, Barranco, Lima, Peru",
+      "lat": -12.1359811,
+      "lon": -77.0179127,
+      "decibeles": 69.72,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en panama, Barranco, Lima, Peru",
+          "descripcion": "concurrida con tráfico alto, autobuses y autos.",
+          "url": "/audios/Avpanama.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 35,
+      "name": "buenaventura aguirre, Barranco, Lima, Peru",
+      "lat": -12.1365129,
+      "lon": -77.0207715,
+      "decibeles": 59.69,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en buenaventura aguirre, Barranco, Lima, Peru",
+          "descripcion": "Calle residencial con bajo a moderado tráfico.",
+          "url": "/audios/Buenaventuraaguirre.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 36,
+      "name": "Jr deportes",
+      "lat": -12.1534249625243,
+      "lon": -77.0202266734054,
+      "decibeles": 62.09,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr deportes",
+          "descripcion": "Zona residencial con tráfico moderado, cerca a la estación del Metropolitano y pocos negocios.",
+          "url": "/audios/deportes.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 37,
+      "name": "Jr. Alfredo Silva",
+      "lat": -12.1554252222645,
+      "lon": -77.0234521175868,
+      "decibeles": 57.69,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr. Alfredo Silva",
+          "descripcion": "Calles tranquilas, poca afluencia vehicular, ambiente residencial.",
+          "url": "/audios/alfredosilva.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 38,
+      "name": "Jr.domeye",
+      "lat": -12.1479082518625,
+      "lon": -77.0227200999773,
+      "decibeles": 68.91,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr.domeye",
+          "descripcion": "Conecta con zonas turísticas: Bajada de Baños y Puente de los Suspiros.",
+          "url": "/audios/domeyer.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 39,
+      "name": "Jr. Colina",
+      "lat": -12.146086646926,
+      "lon": -77.0228757052631,
+      "decibeles": 62.06,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr. Colina",
+          "descripcion": "Calles interiores, residencial y con poco movimiento.",
+          "url": "/audios/colina.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 40,
+      "name": "Jr. Carlos Martinez de Pinillos",
+      "lat": -12.1443266263016,
+      "lon": -77.0230049906046,
+      "decibeles": 70.74,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr. Carlos Martinez de Pinillos",
+          "descripcion": "Muy transitada, cercana al malecón y avenidas principales.",
+          "url": "/audios/pinillo.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 41,
+      "name": "Jr. Pérez Roca",
+      "lat": -12.142248427366,
+      "lon": -77.0232378180979,
+      "decibeles": 62.91,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr. Pérez Roca",
+          "descripcion": "Calle con restaurantes y galerías, tránsito peatonal activo.",
+          "url": "/audios/roca.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 42,
+      "name": "Jr. Centenario",
+      "lat": -12.1412301517034,
+      "lon": -77.0236170132411,
+      "decibeles": 62.15,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr. Centenario",
+          "descripcion": "Residencial, baja circulación, tranquilo.",
+          "url": "/audios/centenario.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 43,
+      "name": "Parque de los Heroes",
+      "lat": -12.139306,
+      "lon": -77.023809,
+      "decibeles": 58.07,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Parque de los Heroes",
+          "descripcion": "Zona alrededor del parque, menos ruido, más belvedere y espacios verdes.",
+          "url": "/audios/hervores.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 44,
+      "name": "Preventorio Municipal de Salud",
+      "lat": -12.138678741884,
+      "lon": -77.0227250800089,
+      "decibeles": 61.39,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Preventorio Municipal de Salud",
+          "descripcion": "Entorno institucional y residencial, tráfico moderado.",
+          "url": "/audios/Municipalidad.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 45,
+      "name": "Av. Almirante Miguel Grau",
+      "lat": -12.135884,
+      "lon": -77.022697,
+      "decibeles": 68.32,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Av. Almirante Miguel Grau",
+          "descripcion": "Alrededor de la universidad: tránsito de autos.",
+          "url": "/audios/grau.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 46,
+      "name": "Pasaje Tejada",
+      "lat": -12.134108498848,
+      "lon": -77.0227197833977,
+      "decibeles": 65.53,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Pasaje Tejada",
+          "descripcion": "Calle pequeña paralela, menos tráfico pero autos y motos frecuentes.",
+          "url": "/audios/psjtejada.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 47,
+      "name": "Calle Samuel Márquez",
+      "lat": -12.134333,
+      "lon": -77.022096,
+      "decibeles": 61.58,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Calle Samuel Márquez",
+          "descripcion": "Vía tranquila, residencial con poco tránsito.",
+          "url": "/audios/marquez.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 48,
+      "name": "Subida Armendariz",
+      "lat": -12.1358260908429,
+      "lon": -77.0241833098096,
+      "decibeles": 69.35,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Subida Armendariz",
+          "descripcion": "Vía con pendiente, tráfico intenso de autopista/malecón.",
+          "url": "/audios/Subida.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 49,
+      "name": "Teodosio Parreño",
+      "lat": -12.1337010923503,
+      "lon": -77.0191830119209,
+      "decibeles": 61.51,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Teodosio Parreño",
+          "descripcion": "Zona residencial con poco ruido, pocos negocios.",
+          "url": "/audios/Teodosio.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 50,
+      "name": "Jr.Caraz Málaga",
+      "lat": -12.13123,
+      "lon": -77.0184,
+      "decibeles": 54.08,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jr.Caraz Málaga",
+          "descripcion": "Muy tranquila, calle interior con poco tráfico.",
+          "url": "/audios/caraz.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 51,
+      "name": "Teodosio Parreño y Av. Tejada",
+      "lat": -12.1316618591662,
+      "lon": -77.0202089584074,
+      "decibeles": 63.56,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Teodosio Parreño y Av. Tejada",
+          "descripcion": "Encrucijada con flujo moderado de autos.",
+          "url": "/audios/tejadateodosio.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 52,
+      "name": "Parque Gonzáles Prada",
+      "lat": -12.1326018610522,
+      "lon": -77.0191458329322,
+      "decibeles": 56.25,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Parque Gonzáles Prada",
+          "descripcion": "Zona verde, espacio público, ambiente relajado.",
+          "url": "/audios/Parquegonzales.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 53,
+      "name": "Parque Gonzáles Prada y Felipe Sassone",
+      "lat": -12.1331482847595,
+      "lon": -77.0187678255829,
+      "decibeles": 56.92,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Parque Gonzáles Prada y Felipe Sassone",
+          "descripcion": "Entorno mixto parque‑residencial, ruido moderado.",
+          "url": "/audios/Felipegonzales.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 54,
+      "name": "Torres Paz",
+      "lat": -12.1360074570098,
+      "lon": -77.0204555186684,
+      "decibeles": 54.45,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Torres Paz",
+          "descripcion": "Calle interior muy tranquila y poco transitada.",
+          "url": "/audios/Torrepaz.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 55,
+      "name": "Estadio Municipal de atletismo Chipoco",
+      "lat": -12.1379769558128,
+      "lon": -77.0235536145351,
+      "decibeles": 70.93,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Estadio Municipal de atletismo Chipoco",
+          "descripcion": "Zona deportiva, actividad en eventos, flujo de autos.",
+          "url": "/audios/Chipoco.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 56,
+      "name": "Jirón Medrano Silva, Barranco, Lima, Peru",
+      "lat": -12.135437,
+      "lon": -77.0214508,
+      "decibeles": 70.1,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Medrano Silva, Barranco, Lima, Peru",
+          "descripcion": "Zona cercana a vía principal o comercio. Se  vió transitar vehículos y estudiantes",
+          "url": "/audios/medrano.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 57,
+      "name": "Jirón Carlos Arrieta, Barranco, Lima, Peru",
+      "lat": -12.1372419,
+      "lon": -77.020514,
+      "decibeles": 65.71,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Carlos Arrieta, Barranco, Lima, Peru",
+          "descripcion": "Calle con movimiento regular,  con servicios locales.",
+          "url": "/audios/carlosarrieta.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 58,
+      "name": "Maynas, Barranco, Lima, Peru",
+      "lat": -12.1386713,
+      "lon": -77.0217574,
+      "decibeles": 56.69,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Maynas, Barranco, Lima, Peru",
+          "descripcion": "Zona más tranquila, probablemente residencial o poco transitada.",
+          "url": "/audios/maynas.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 59,
+      "name": "Tumbes, Barranco, Lima, Peru",
+      "lat": -12.1399448,
+      "lon": -77.0211659,
+      "decibeles": 56.07,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Tumbes, Barranco, Lima, Peru",
+          "descripcion": "Nivel bajo de ruido, parques y  poco tránsito.",
+          "url": "/audios/tumbes.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 60,
+      "name": "Jaén, Barranco, Lima, Peru",
+      "lat": -12.1388218,
+      "lon": -77.0207465,
+      "decibeles": 55.77,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jaén, Barranco, Lima, Peru",
+          "descripcion": "Entorno sereno, ideal para vivienda sin mucho ruido externo.",
+          "url": "/audios/jaen.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 61,
+      "name": "Soldado, Barranco, Lima, Peru",
+      "lat": -12.1372796,
+      "lon": -77.0203974,
+      "decibeles": 50.4,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Soldado, Barranco, Lima, Peru",
+          "descripcion": "Zona muy tranquila, probablemente sin mucho flujo vehicular.",
+          "url": "/audios/soldado.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 62,
+      "name": "Tumay, Barranco, Lima, Peru",
+      "lat": -12.1398558,
+      "lon": -77.0198122,
+      "decibeles": 49.42,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Tumay, Barranco, Lima, Peru",
+          "descripcion": "Área silenciosa, compatible con zonas verdes o alejadas del centro.",
+          "url": "/audios/tumay.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 63,
+      "name": "Av Sol Este, Barranco, Lima, Peru",
+      "lat": -12.1390111,
+      "lon": -77.0178326,
+      "decibeles": 59.86,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Av Sol Este, Barranco, Lima, Peru",
+          "descripcion": "Avenida con tránsito ligero, pero aún dentro de lo aceptable.",
+          "url": "/audios/sol.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 64,
+      "name": "Enrique Barron, Barranco, Lima, Peru",
+      "lat": -12.1348502,
+      "lon": -77.0202129,
+      "decibeles": 69.13,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Enrique Barron, Barranco, Lima, Peru",
+          "descripcion": "Calle con alto flujo de personas o vehículos.",
+          "url": "/audios/Enriquebarron.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 65,
+      "name": "Panamá, Barranco, Lima, Peru",
+      "lat": -12.1359811,
+      "lon": -77.0179127,
+      "decibeles": 72.9,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Panamá, Barranco, Lima, Peru",
+          "descripcion": "Zona muy ruidosa, posiblemente comercial o de alto tráfico.",
+          "url": "/audios/Panama.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 66,
+      "name": "Rosendo Vidaurre, Barranco, Lima, Peru",
+      "lat": -12.1357237,
+      "lon": -77.0191888,
+      "decibeles": 67.97,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Rosendo Vidaurre, Barranco, Lima, Peru",
+          "descripcion": "Calle activa con presencia de negocios o tránsito frecuente.",
+          "url": "/audios/rosendovidaurre.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 67,
+      "name": "Ca Pedro Salazar, Barranco, Lima, Peru",
+      "lat": -12.1407113,
+      "lon": -77.0187215,
+      "decibeles": 139.49,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Ca Pedro Salazar, Barranco, Lima, Peru",
+          "descripcion": "Nivel de ruido extremadamente alto, mucho tránsito vehicular",
+          "url": "/audios/pedrosalazar.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 68,
+      "name": "Av Nicolás, Barranco, Lima, Peru",
+      "lat": -12.1418734,
+      "lon": -77.0179591,
+      "decibeles": 66.65,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Av Nicolás, Barranco, Lima, Peru",
+          "descripcion": "Avenida concurrida, con tráfico medio-alto.",
+          "url": "/audios/nicolaspierola.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 69,
+      "name": "Jirón Cora, Barranco, Lima, Peru",
+      "lat": -12.1423613,
+      "lon": -77.0194406,
+      "decibeles": 62.18,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Cora, Barranco, Lima, Peru",
+          "descripcion": "Nivel aceptable en área urbana con actividad moderada.",
+          "url": "/audios/cora.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 70,
+      "name": "Manco Cápac, Barranco, Lima, Peru",
+      "lat": -12.1421341,
+      "lon": -77.0207116,
+      "decibeles": 65.61,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Manco Cápac, Barranco, Lima, Peru",
+          "descripcion": "Zona activa, probablemente cercana a comercios o avenidas.",
+          "url": "/audios/mancocapac.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 71,
+      "name": "Av Miraflores, Barranco, Lima, Peru",
+      "lat": -12.1428427,
+      "lon": -77.0201817,
+      "decibeles": 66.75,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Av Miraflores, Barranco, Lima, Peru",
+          "descripcion": "Avenida con tránsito constante y vida urbana.",
+          "url": "/audios/miraflores.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 72,
+      "name": "San Antonio, Barranco, Lima, Peru",
+      "lat": -12.1442201,
+      "lon": -77.0217436,
+      "decibeles": 64.85,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en San Antonio, Barranco, Lima, Peru",
+          "descripcion": "Calle moderadamente activa, posiblemente residencial comercial.",
+          "url": "/audios/Sanantonio.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 73,
+      "name": "Jirón Santa Rosa, Barranco, Lima, Peru",
+      "lat": -12.1450863,
+      "lon": -77.0193126,
+      "decibeles": 56.73,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Santa Rosa, Barranco, Lima, Peru",
+          "descripcion": "Entorno tranquilo, adecuado para zonas residenciales.",
+          "url": "/audios/santarosa.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 74,
+      "name": "Jirón Colon, Barranco, Lima, Peru",
+      "lat": -12.1448051,
+      "lon": -77.020162,
+      "decibeles": 59.96,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Colon, Barranco, Lima, Peru",
+          "descripcion": "Nivel moderado, indica tránsito esporádico o poco ruido estructural.",
+          "url": "/audios/colon.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 75,
+      "name": "Jirón Cajamarca, Barranco, Lima, Peru",
+      "lat": -12.144929,
+      "lon": -77.020688,
+      "decibeles": 59.78,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Cajamarca, Barranco, Lima, Peru",
+          "descripcion": "Calle serena con poco flujo vehicular.",
+          "url": "/audios/cajamarca.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 76,
+      "name": "Ca Bregante, Barranco, Lima, Peru",
+      "lat": -12.1463327,
+      "lon": -77.0207925,
+      "decibeles": 59.67,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Ca Bregante, Barranco, Lima, Peru",
+          "descripcion": "Zona silenciosa o de bajo impacto sonoro.",
+          "url": "/audios/Bregante.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 77,
+      "name": "Jirón Unión, Barranco, Lima, Peru",
+      "lat": -12.1465446,
+      "lon": -77.020053,
+      "decibeles": 62.62,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Unión, Barranco, Lima, Peru",
+          "descripcion": "Nivel medio, compatible con uso mixto (vivienda y comercio).",
+          "url": "/audios/union.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 78,
+      "name": "Jirón Felipe Pardo, Barranco, Lima, Peru",
+      "lat": -12.1472322,
+      "lon": -77.0209595,
+      "decibeles": 66.62,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Jirón Felipe Pardo, Barranco, Lima, Peru",
+          "descripcion": "Calle activa con comercio o tránsito local.",
+          "url": "/audios/felipepardo.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 79,
+      "name": "Parque Municipal de Barranco, Barranco, Lima, Peru",
+      "lat": -12.1494807,
+      "lon": -77.0211974,
+      "decibeles": 63.94,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Parque Municipal de Barranco, Barranco, Lima, Peru",
+          "descripcion": "Área pública con ruido moderado por visitantes.",
+          "url": "/audios/Parquebarranco.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 80,
+      "name": "Av 28 Julio, Barranco, Lima, Peru",
+      "lat": -12.1514925,
+      "lon": -77.0230735,
+      "decibeles": 69.34,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Av 28 Julio, Barranco, Lima, Peru",
+          "descripcion": "Avenida importante, con alto nivel de tránsito.",
+          "url": "/audios/dejulio.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 81,
+      "name": "Tarapacá, Barranco, Lima, Peru",
+      "lat": -12.1535478,
+      "lon": -77.0216283,
+      "decibeles": 58.91,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Tarapacá, Barranco, Lima, Peru",
+          "descripcion": "Calle tranquila, adecuada para zonas residenciales.",
+          "url": "/audios/tarapaca.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 82,
+      "name": "BATTA Isola, Barranco, Lima, Peru",
+      "lat": -12.1526548,
+      "lon": -77.0206068,
+      "decibeles": 56.63,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en BATTA Isola, Barranco, Lima, Peru",
+          "descripcion": "Área de bajo ruido, posible zona peatonal o verde.",
+          "url": "/audios/Bata.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 83,
+      "name": "Rissi, Barranco, Lima, Peru",
+      "lat": -12.1530331,
+      "lon": -77.0202594,
+      "decibeles": 60.16,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Rissi, Barranco, Lima, Peru",
+          "descripcion": "Nivel moderado, entorno urbano sin congestión significativa.",
+          "url": "/audios/rissi.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
+    },
+    {
+      "id": 84,
+      "name": "Av. 2 de Mayo",
+      "lat": -12.1522926650046,
+      "lon": -77.0226489589332,
+      "decibeles": 63.24,
+      "audios": [
+        {
+          "titulo": "Descripción de ruido en Av. 2 de Mayo",
+          "descripcion": "Avenida con nivel de ruido medio, probablemente residencial/comercial.",
+          "url": "/audios/mayo.mp3",
+          "tipo": "ambiente"
+        }
+      ],
+      "timestamp": "2025-07-04T18:48:12.903429"
     }
   ]
 }
