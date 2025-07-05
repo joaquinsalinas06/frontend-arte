@@ -32,7 +32,7 @@ export default function Header({ showCreditsButton = true, showBackButton = fals
               Ecos Urbanos: Barranco a través de sus ruidos
             </h1>
             <div className="text-xs sm:text-sm text-slate-300 mt-1">
-              <span className="font-medium">Arte y Tecnología - Sección 1.7</span>
+              <span className="font-medium">Arte y Tecnología - Sección 3</span>
               <span className="mx-2">•</span>
               <span>Prof. Violeta Reaño</span>
               <span className="mx-2">•</span>

@@ -28,7 +28,7 @@ export default function Credits() {
                 <h3 className="text-lg font-semibold text-slate-700 mb-2">Información Académica</h3>
                 <ul className="text-slate-600 space-y-1">
                   <li><strong>Curso:</strong> Arte y Tecnología</li>
-                  <li><strong>Sección:</strong> 1.7</li>
+                  <li><strong>Sección:</strong> 3</li>
                   <li><strong>Profesora:</strong> Violeta Reaño</li>
                   <li><strong>Institución:</strong> Universidad de Ingeniería y Tecnología - UTEC</li>
                 </ul>
